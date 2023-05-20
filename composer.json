@@ -13,16 +13,16 @@
     
     "autoload": {
         "psr-4": {
-            "Nhanhchaukp\\Alepay\\": "src/"
+            "Nhanchaukp\\Alepay\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Nhanhchaukp\\Alepay\\AlepayServiceProvider"
+                "Nhanchaukp\\Alepay\\AlepayServiceProvider"
             ],
             "aliases": {
-                "Alepay": "Nhanhchaukp\\Alepay\\Facades\\AlepayFacade"
+                "Alepay": "Nhanchaukp\\Alepay\\Facades\\AlepayFacade"
             }
         }
     }
