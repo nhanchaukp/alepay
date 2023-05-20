@@ -1,0 +1,29 @@
+{
+    "name": "nhanchaukp/alepay",
+    "description": "Tích hợp thanh toán Alepay",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Nhan Chau KP",
+            "email": "nhanchauthai@gmail.com"
+        }
+    ],
+    
+    "autoload": {
+        "psr-4": {
+            "Nhanhchaukp\\Alepay\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nhanhchaukp\\Alepay\\AlepayServiceProvider"
+            ],
+            "aliases": {
+                "Alepay": "Nhanhchaukp\\Alepay\\Facades\\AlepayFacade"
+            }
+        }
+    }
+}
