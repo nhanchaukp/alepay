@@ -1,6 +1,6 @@
 <?php
 App::booted(function() {
-    $namespace = 'Nhanhchaukp\Alepay\Http\Controllers';
+    $namespace = 'Nhanchaukp\Alepay\Http\Controllers';
 
     Route::namespace($namespace)->name('app.')->group(function() {
         Route::get('/demo-alepay','AlepayController@demoAlepay');

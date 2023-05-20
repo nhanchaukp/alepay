@@ -1,9 +1,9 @@
 <?php
 
-namespace Nhanhchaukp\Alepay\Facades;
+namespace Nhanchaukp\Alepay\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Nhanhchaukp\Alepay\Alepay;
+use Nhanchaukp\Alepay\Alepay;
 
 final class AlepayFacade extends Facade
 {

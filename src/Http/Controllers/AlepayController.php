@@ -1,8 +1,8 @@
 <?php
 
-namespace Nhanhchaukp\Alepay\Http\Controllers;
+namespace Nhanchaukp\Alepay\Http\Controllers;
 
-use Nhanhchaukp\Alepay\Alepay;
+use Nhanchaukp\Alepay\Alepay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 

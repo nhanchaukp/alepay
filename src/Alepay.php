@@ -1,6 +1,6 @@
 <?php
 
-namespace Nhanhchaukp\Alepay;
+namespace Nhanchaukp\Alepay;
 
 use Illuminate\Support\Arr;
 
