@@ -7,10 +7,10 @@
     "authors": [
         {
             "name": "Nhan Chau KP",
-            "email": "nhanchauthai@gmail.com",
-            "homepage": "https://nhandev.com"
+            "email": "nhanchauthai@gmail.com"
         }
     ],
+    
     "autoload": {
         "psr-4": {
             "Nhanchaukp\\Alepay\\": "src/"
@@ -22,7 +22,7 @@
                 "Nhanchaukp\\Alepay\\AlepayServiceProvider"
             ],
             "aliases": {
-                "Alepay": "Nhanchaukp\\Alepay\\Facades\\AlepayFacade"
+                "Alepay": "Nhanchaukp\\Alepay\\Facades\\Alepay"
             }
         }
     }

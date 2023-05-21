@@ -2,16 +2,13 @@
 
 namespace Nhanchaukp\Alepay\Facades;
 
-use Illuminate\Support\Facades\Facade;
-use Nhanchaukp\Alepay\Alepay;
-
-final class AlepayFacade extends Facade
+final class Alepay extends \Illuminate\Support\Facades\Facade
 {
     /**
      * Get the registered name of the component.
      */
     protected static function getFacadeAccessor(): string
     {
-        return Alepay::class;
+        return \Nhanchaukp\Alepay\Alepay::class;
     }
 }

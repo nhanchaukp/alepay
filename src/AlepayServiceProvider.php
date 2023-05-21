@@ -2,31 +2,25 @@
 
 namespace Nhanchaukp\Alepay;
 
-use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 use File;
+use Nhanchaukp\Alepay\Facades\Alepay;
 
- class AlepayServiceProvider extends ServiceProvider implements DeferrableProvider
+ class AlepayServiceProvider extends ServiceProvider
 {
 
-	/**
-	 * Register commands file here
-	 * alias => path
-	 */
-	protected $commands = [
-
-	];
+	public function boot()
+	{
+		$this->registerModule();
+	}
 
 	/**
 	 * Register bindings in the container.
 	 */
 	public function register()
 	{
-		// Đăng ký config cho từng Module
 		$this->configure();
 		$this->offerPublishing();
-		$this->registerCommands();
-		// boot commands
 	}
 
 	/**
@@ -42,7 +36,7 @@ use File;
 	 */
 	private function offerPublishing(): void
 	{
-		if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
+		if ($this->app->runningInConsole()) {
 			$this->publishes([
 				__DIR__ . '/config/alepay.php' => config_path('alepay.php'),
 			], 'alepay-config');
@@ -53,24 +47,8 @@ use File;
 		}
 	}
 
-	/**
-	 * Register the Artisan commands.
-	 */
-	private function registerCommands(): void
-	{
-		if ($this->app->runningInConsole()) {
-			$this->commands($this->commands);
-		}
-	}
-
-	public function boot()
-	{
-		$this->registerModule();
-	}
-
 	private function registerModule()
 	{
-		$modulePath = __DIR__ . '/';
 		$moduleName = 'Alepay';
 
 		// boot route

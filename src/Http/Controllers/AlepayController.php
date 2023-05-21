@@ -2,51 +2,46 @@
 
 namespace Nhanchaukp\Alepay\Http\Controllers;
 
-use Nhanchaukp\Alepay\Alepay;
+use Nhanchaukp\Alepay\Facades\Alepay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 
 class AlepayController
 {
-    public function demoAlepay()
-    {
-        return view('Alepay::alepay');
-    }
+	public function demoAlepay()
+	{
+		return view('Alepay::alepay');
+	}
 
-    public function alepaySetup(Request $request)
-    {
-        $orderInfo = [
-            'amount' => 100000, 
-            'orderCode' => 'FCODE123', 
-            'currency' => 'VND',
-            'orderDescription' => 'Test thanh toan',
-            'totalItem' => 1, 
-            // 'checkoutType' => 3, 
-            // 'allowDomestic' => true, 
+	public function alepaySetup(Request $request)
+	{
+		$orderInfo = $request->all();
+		$orderInfo['checkoutType'] = (int)$request->checkoutType;
+		$orderInfo['allowDomestic'] = (bool)$request->allowDomestic;
 
-            'buyerName' => 'Chau Thai Nhan',
-            'buyerEmail' => 'nhanchauthai@gmail.com',
-            'buyerPhone' => '0395166587',
-            'buyerAddress' => 'Vung liem',
-            'buyerCity' => 'Vinh Long',
-            'buyerCountry' => 'Viet Nam',
+		$result = Alepay::requestPayment($orderInfo);
 
-        ];
-        
-        $alepay = new Alepay();
+		if (isset($result) && !empty($result->checkoutUrl)) {
+			return redirect()->to($result->checkoutUrl);
+		} else {
+			dd($result);
+		}
+	}
 
-        $result = $alepay->sendOrderToAlepay($orderInfo);
+	public function alepayResult(Request $request)
+	{
+        $info = Alepay::getTransactionInfo($request->transactionCode);
+		dump($info);
+	}
 
-        if (isset($result) && !empty($result->checkoutUrl)) {
-            echo '<meta http-equiv="refresh" content="0;url=' . $result->checkoutUrl. '">';
-        } else {
-            dd($result);
-            //->message;
-        }
-    }
+	public function webhook(Request $request)
+	{
+		Log::debug(json_encode($request->all()));
 
-    public function alepayResult(Request $request)
-    {
-        dd($request->all());
-    }
+		return response()->json([
+			'raw' => $request->all(),
+			'verify' => Alepay::verifyTransaction($request->all())
+		]);
+	}
 }
