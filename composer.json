@@ -1,6 +1,7 @@
 {
     "name": "nhanchaukp/alepay",
-    "description": "Tích hợp thanh toán Alepay",
+    "description": "Tích hợp thanh toán Alepay cho Laravel",
+    "keywords": ["alepay", "laravel"],
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",

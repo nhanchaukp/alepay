@@ -1,8 +1,6 @@
-## Hướng dẫn sử dụng Alepay ##
+# Tích hợp thanh toán Alepay cho Laravel
 
-**Giới thiệu:** Đây là package dùng thanh toán qua cổng Alepay.
-
-### Cài đặt để sử dụng ###
+### Hướng dẫn cài đặt
 
 Cài đặt package 
 ```
